@@ -3,16 +3,82 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+body, h1{
+    margin: 0;
+}
+
+h1{    
+    font-size: 56px;
+    color: #ab3030;
+    text-align: center;
+    padding-top: 60px;
+}
 p {
   text-align: center;
   font-size: 60px;
-  margin-top: 0px;
+  margin: 0px;
+}
+
+.text{
+    font-size: 30px;
+}
+
+.back-image{
+    background-image: url(yaris.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.count-down {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    background-color: #ab30308a;
+    padding: 10px;
+    border-radius: 16px;
+    margin: 10px;
+    width: 150px;
+}
+
+@media screen and (min-width: 576px) {
+    .count-down {
+    display: flex;
+}
+h1{    
+    font-size: 70px;
+}
+    
 }
 </style>
 </head>
 <body>
 
-<p id="demo"></p>
+    <div class="back-image">
+        <h1>Comming soon</h1>
+
+        <div class="count-down">
+        <div class="card">
+            <p id="days"></p>
+            <p class="text">Days</p>
+        </div>
+        <div class="card">
+            <p id="hours"></p>
+            <p class="text">Hours</p>
+        </div>
+        <div class="card">
+            <p id="minutes"></p>
+            <p class="text">Minutes</p>
+        </div>
+        <div class="card">
+            <p id="seconds"></p>
+            <p class="text">Seconds</p>
+        </div>
+        </div>
+    </div>
 
 <script>
 // Set the date we're counting down to
@@ -33,10 +99,14 @@ var x = setInterval(function() {
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+  document.getElementById("days").innerHTML = days;;
     
+  document.getElementById("hours").innerHTML = hours;
+
+  document.getElementById("minutes").innerHTML = minutes;
+  
+  document.getElementById("seconds").innerHTML = seconds;
+
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(x);
